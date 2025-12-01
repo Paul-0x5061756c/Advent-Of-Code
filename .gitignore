@@ -1,0 +1,5 @@
+*.elf
+*.bin
+*.exe
+./2025/Day1/part1
+./2025/Day1/part2
