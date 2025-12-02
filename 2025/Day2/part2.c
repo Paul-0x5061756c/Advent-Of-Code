@@ -4,8 +4,8 @@
 
 const char delimiter = '-';
 
-char* int_to_char_array(long long number, char* buffer, size_t bufferSize) {
-    snprintf(buffer, bufferSize, "%lld", number);
+char* int_to_char_array(long number, char* buffer, size_t bufferSize) {
+    snprintf(buffer, bufferSize, "%ld", number);
     return buffer;
 }
 
@@ -30,18 +30,18 @@ int find_repeating_patterns(char* char_array) {
     return 0;
 }
 
-long long get_invalid_id(char* input){
+long get_invalid_id(char* input){
     char *dash = strchr(input, delimiter);
     if (!dash) return 0;
     *dash = '\0';
 
-    long long a = strtoll(input, NULL, 10);
-    long long b = strtoll(dash + 1, NULL, 10);
+    long a = strtoll(input, NULL, 10);
+    long b = strtoll(dash + 1, NULL, 10);
 
-    long long result = 0;
+    long result = 0;
     char buf[50];
 
-    for(long long i = a; i <= b; i++){
+    for(long i = a; i <= b; i++){
         int_to_char_array(i, buf, sizeof(buf));
         if(find_repeating_patterns(buf)){
             result += i;
@@ -54,16 +54,16 @@ long long get_invalid_id(char* input){
 int main() {
     char buffer[50];
     char filename[] = "input.txt";
-    long long sum_of_invalid_ids = 0;
+    long sum_of_invalid_ids = 0;
 
     FILE *file = fopen(filename, "r");
     if (file) { 
         while (fgets(buffer, sizeof(buffer), file)) {
-            long long result = get_invalid_id(buffer);
+            long result = get_invalid_id(buffer);
             sum_of_invalid_ids += result;
         }
         fclose(file);
     } 
-    printf("Sum of invalid IDs: %lld\n", sum_of_invalid_ids);
+    printf("Sum of invalid IDs: %ld\n", sum_of_invalid_ids);
 }
 
