@@ -25,11 +25,10 @@ int find_repeating_patterns(char* char_array) {
 }
 
 long long get_invalid_id(char* input){
-    input[strcspn(input, "\r\n")] = '\0';
     char *dash = strchr(input, delimiter);
     if (!dash) return 0;
-
     *dash = '\0';
+
     long long a = strtoll(input, NULL, 10);
     long long b = strtoll(dash + 1, NULL, 10);
 
@@ -47,7 +46,7 @@ long long get_invalid_id(char* input){
 }
 
 int main() {
-    char buffer[200];
+    char buffer[50];
     char filename[] = "input.txt";
     long long sum_of_invalid_ids = 0;
 
