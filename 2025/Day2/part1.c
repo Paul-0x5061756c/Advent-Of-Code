@@ -9,19 +9,11 @@ char* int_to_char_array(long number, char* buffer, size_t bufferSize) {
     return buffer;
 }
 
-int find_repeating_patterns(char* char_array) {
-    int length = strlen(char_array);
-
-    if(length < 2) return 0;
-
-    if(length % 2 == 0){
-        int half_length = length / 2;
-        if(strncmp(char_array, char_array + half_length, half_length) == 0){
-            return 1;
-        }
-    }
-
-    return 0;
+int find_repeating_patterns(char* c) {
+    int length = strlen(c);
+    if(length < 2 || (length & 1)) return 0;
+    size_t half = length >> 1;
+    return memcmp(c, c + half, half) == 0;
 }
 
 long get_invalid_id(char* input){
