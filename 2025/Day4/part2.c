@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 
+const int directions[8][2] = {
+  {-1, -1}, { 0, -1}, { 1, -1},
+  {-1,  0},           { 1,  0},
+  {-1,  1}, { 0,  1}, { 1,  1}
+};
+
 int check_accessible(char rows[][512], int width, int height, int x, int y) {
     if (rows[y][x] != '@')
         return 0;
-
-    int directions[8][2] = {
-        {-1, -1}, { 0, -1}, { 1, -1},
-        {-1,  0},           { 1,  0},
-        {-1,  1}, { 0,  1}, { 1,  1}
-    };
 
     int count = 0;
 
@@ -26,12 +26,6 @@ int check_accessible(char rows[][512], int width, int height, int x, int y) {
 
     return count < 4;
 }
-
-const int directions[8][2] = {
-  {-1, -1}, { 0, -1}, { 1, -1},
-  {-1,  0},           { 1,  0},
-  {-1,  1}, { 0,  1}, { 1,  1}
-};
 
 int main() {
     char buffer[512];

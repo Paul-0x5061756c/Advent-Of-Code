@@ -11,12 +11,6 @@ int check_accessible(char rows[][512], int width, int height, int x, int y) {
     if (rows[y][x] != '@')
         return 0;
 
-    int directions[8][2] = {
-        {-1, -1}, { 0, -1}, { 1, -1},
-        {-1,  0},           { 1,  0},
-        {-1,  1}, { 0,  1}, { 1,  1}
-    };
-
     int count = 0;
 
     for (int i = 0; i < 8; i++) {
